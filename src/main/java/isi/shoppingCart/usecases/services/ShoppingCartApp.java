@@ -6,19 +6,22 @@ import isi.shoppingCart.entities.Product;
 import isi.shoppingCart.usecases.ports.CartRepository;
 import isi.shoppingCart.usecases.ports.ProductRepository;
 import java.util.List;
-import isi.
+import isi.shoppingCart.usecases.services.ConfirmPurchaseUseCase;
 
 public class ShoppingCartApp {
     private ProductRepository productRepository;
     private CartRepository cartRepository;
     private AgregarProductoAlCarritoUseCase agregarProductoAlCarritoUseCase;
+    private  ConfirmPurchaseUseCase confirmPurchaseUseCase;
 
     public ShoppingCartApp(ProductRepository productRepository,
                            CartRepository cartRepository,
-                           AgregarProductoAlCarritoUseCase agregarProductoAlCarritoUseCase) {
+                           AgregarProductoAlCarritoUseCase agregarProductoAlCarritoUseCase,
+                           ConfirmPurchaseUseCase confirmPurchaseUseCase) {
         this.productRepository = productRepository;
         this.cartRepository = cartRepository;
         this.agregarProductoAlCarritoUseCase = agregarProductoAlCarritoUseCase;
+        this.confirmPurchaseUseCase = confirmPurchaseUseCase;
     }
 
     public List<Product> getCatalogProducts() {
@@ -39,6 +42,6 @@ public class ShoppingCartApp {
         return agregarProductoAlCarritoUseCase.execute(productId);
     }
     public String ConnfirmarPurchase(){
-        return
+        return confirmPurchaseUseCase.execute();
     }
 }

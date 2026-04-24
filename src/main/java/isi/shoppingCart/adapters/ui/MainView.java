@@ -7,6 +7,7 @@ import isi.shoppingCart.infrastructure.repositories.InMemoryProductRepository;
 import isi.shoppingCart.usecases.ports.CartRepository;
 import isi.shoppingCart.usecases.ports.ProductRepository;
 import isi.shoppingCart.usecases.services.AgregarProductoAlCarritoUseCase;
+import isi.shoppingCart.usecases.services.ConfirmPurchaseUseCase;
 import isi.shoppingCart.usecases.services.ShoppingCartApp;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -33,11 +34,13 @@ public class MainView {
         CartRepository cartRepository = new InMemoryCartRepository(productRepository);
         AgregarProductoAlCarritoUseCase agregarProductoAlCarritoUseCase =
                 new AgregarProductoAlCarritoUseCase(productRepository, cartRepository);
+        ConfirmPurchaseUseCase confirmPurchaseUseCase = new ConfirmPurchaseUseCase(productRepository, cartRepository);
 
         shoppingCartApp = new ShoppingCartApp(
                 productRepository,
                 cartRepository,
-                agregarProductoAlCarritoUseCase
+                agregarProductoAlCarritoUseCase,
+                confirmPurchaseUseCase
         );
 
         catalogBox = new VBox(10);
