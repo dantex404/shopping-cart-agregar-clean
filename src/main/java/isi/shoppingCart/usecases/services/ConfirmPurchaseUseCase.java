@@ -1,6 +1,7 @@
 package isi.shoppingCart.usecases.services;
 
 import isi.shoppingCart.entities.Cart;
+import isi.shoppingCart.entities.CartItem;
 import isi.shoppingCart.entities.Product;
 import isi.shoppingCart.infrastructure.repositories.InMemoryCartRepository;
 import isi.shoppingCart.infrastructure.repositories.InMemoryProductRepository;
@@ -25,12 +26,12 @@ public class ConfirmPurchaseUseCase {
             return "EL carrito está vació, no se puede continuar la compra hasta que no se tenga al menos un producto.";
         }
 
-        //pendientes:
-
-
-        //recorrer items y descontar stock de cada uno
-
-
+        for (CartItem item : cart.getItems()){
+            Product product = item.getProduct();
+            for(int i=0; i < item.getQuantity(); i++){
+                product.decreaseAvailableQuantity();
+            }
+        }
         //limpiar el carrito
 
 
