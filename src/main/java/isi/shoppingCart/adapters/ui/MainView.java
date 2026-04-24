@@ -84,7 +84,16 @@ public class MainView {
         title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
         Button confirmButton = new Button("Confirmar compra");
-        confirmButton.setOnAction(event -> showMessage("Por implementar"));
+        confirmButton.setOnAction(event -> {
+            String message = shoppingCartApp.confirmarPurchase();
+
+            if (!message.equals("")) {
+                showMessage(message);
+            }
+
+            refreshCatalog();
+            refreshCart();
+        });
 
         VBox panel = new VBox(10);
         panel.getChildren().addAll(title, cartBox, totalLabel, confirmButton);

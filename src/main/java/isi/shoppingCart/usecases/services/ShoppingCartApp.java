@@ -41,7 +41,7 @@ public class ShoppingCartApp {
     public String addProductToCart(int productId) {
         return agregarProductoAlCarritoUseCase.execute(productId);
     }
-    public String ConnfirmarPurchase(){
+    public String confirmarPurchase(){
         return confirmPurchaseUseCase.execute();
     }
 }

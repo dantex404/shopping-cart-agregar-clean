@@ -17,13 +17,12 @@ public class ConfirmPurchaseUseCase {
         this.productRepository = productRepository;
         this.cartRepository = cartRepository;
     }
-    Cart cart = cartRepository.getCart();
 
     public String execute(){
         Cart cart = cartRepository.getCart();
 
         if (cart.getItems().isEmpty()) {
-            return "EL carrito está vació, no se puede continuar la compra hasta que no se tenga al menos un producto.";
+            return "ELl carrito está vació, no se puede continuar la compra hasta que no se tenga al menos un producto.";
         }
 
         for (CartItem item : cart.getItems()){
