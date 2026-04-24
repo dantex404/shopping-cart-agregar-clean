@@ -6,6 +6,7 @@ import isi.shoppingCart.entities.Product;
 import isi.shoppingCart.usecases.ports.CartRepository;
 import isi.shoppingCart.usecases.ports.ProductRepository;
 import java.util.List;
+import isi.
 
 public class ShoppingCartApp {
     private ProductRepository productRepository;
@@ -36,5 +37,8 @@ public class ShoppingCartApp {
 
     public String addProductToCart(int productId) {
         return agregarProductoAlCarritoUseCase.execute(productId);
+    }
+    public String ConnfirmarPurchase(){
+        return
     }
 }

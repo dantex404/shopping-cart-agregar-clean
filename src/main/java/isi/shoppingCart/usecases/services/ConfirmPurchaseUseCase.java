@@ -32,10 +32,8 @@ public class ConfirmPurchaseUseCase {
                 product.decreaseAvailableQuantity();
             }
         }
-        //limpiar el carrito
-
-
         double Total = cart.getTotal();
+        cart.clear();
         return "Compra Confirmada, Total $" + Total;
     }
 }
